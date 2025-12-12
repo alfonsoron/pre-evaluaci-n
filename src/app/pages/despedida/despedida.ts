@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MayusculasPipe } from "../../mayusculas-pipe";
 
@@ -10,13 +10,13 @@ import { MayusculasPipe } from "../../mayusculas-pipe";
 })
 export class Despedida {
 
-  nombreRecibido: string = '';
+  nombreRecibido= signal<string>('');
 
 
   constructor(private route: ActivatedRoute) {
 
     this.route.params.subscribe((params: { [x: string]: string; }) => {
-      this.nombreRecibido = params['nombre'];
+      this.nombreRecibido.set(params['nombre']);
     });
   }
 }
