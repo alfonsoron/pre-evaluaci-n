@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MayusculasPipe } from "../../mayusculas-pipe";
 import { RouterLink } from "@angular/router";
@@ -13,19 +13,21 @@ export class Saludo {
   nombre: string = 'AlfOnSo RoN';
 
 
-    @Input() mostrarSaludo: boolean = true;
-    //mostrarSaludo = input<boolean>(true); no se usa input porque define a la funcion ya con ture
+    //@Input() mostrarSaludo: boolean = true;
+    _mostrarSaludo = input<boolean>(true);
+    mostrarSaludo = signal(this._mostrarSaludo());
 
     alternarMensaje() {
-      this.mostrarSaludo = !this.mostrarSaludo;
+      this.mostrarSaludo.update( (value) => !value);
     }
 
-
-    colorSeleccionado: string = 'verde';
+    _colorSeleccionado = input<string>('verde');
+    colorSeleccionado = signal(this._colorSeleccionado());
 
     cambiarColor(color: string) {
-      this.colorSeleccionado = color;
+      this.colorSeleccionado.set(color);
     }
   }
 
 
+//hola
