@@ -1,7 +1,4 @@
 
-
-
-
 @if (mostrarSaludo() == true) {
 
     <h1 class="text-3xl font-bold m-4"
@@ -12,25 +9,6 @@
       Hola {{ nombre | mayusculas }}!!!!!
     </h1>
   }
-<div class="ml-4 mb-4">
-  <button (click)="cambiarColor('rojo')"
-  class="bg-red-500 text-white px-4 py-2 rounded mr-2">
-    Rojo
-  </button>
-
-  <button (click)="cambiarColor('verde')"
-  class="bg-green-500 text-white px-4 py-2 rounded mr-2">
-    Verde
-  </button>
-</div>
-
-<div class="ml-4 mb-4">
-    <button class="bg-blue-500 text-white px-4 py-2 rounded mr-2"
-  (click)="alternarMensaje()">
-  Alternar Mensaje
-  </button>
-
-</div>
 
 <div class="ml-4 mb-4">
   <button routerLink="despedida/{{ nombre }}"
